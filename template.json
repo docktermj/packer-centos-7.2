@@ -37,7 +37,7 @@
 		"boot_wait": "10s",
 		"disk_size": 40520,
 		"guest_os_type": "centos-64",
-
+		"headless": "true",
 		"http_directory": "http",
 		"iso_checksum": "783eef50e1fb91c78901d0421d8114a29b998478",
 		"iso_checksum_type": "sha1",
