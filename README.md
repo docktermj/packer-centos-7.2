@@ -14,6 +14,17 @@ See [build dependencies](https://github.com/docktermj/KnowledgeBase/blob/master/
 
 Use `make help` to see targets.
 
+### Define packer_cache directory
+
+Optional: This defines a common place to keep large `*.iso` files for reuse across repository instances.
+If not defined, a `packer_cache` directory will be created within each "packer-*" repository instance
+and will not be reused across repository instances.
+
+```console
+mkdir ~/packer_cache
+export PACKER_CACHE_DIR=~/packer_cache
+```
+
 ### Build all versions
 
 ```console
