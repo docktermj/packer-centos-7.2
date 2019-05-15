@@ -190,7 +190,7 @@ Example:
     ssh vagrant@nn.nn.nn.nn
     ```
 
-Password: vagrant
+    1. Password: vagrant
 
 ### Remove image from Vagrant library
 
