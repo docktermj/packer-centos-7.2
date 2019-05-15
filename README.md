@@ -192,6 +192,15 @@ Example:
 
     1. Password: vagrant
 
+#### Destroy guest machine
+
+1. Example:
+
+    ```console
+    cd ${PACKER_CENTOS_72}
+    vagrant destroy
+    ```
+
 ### Remove image from Vagrant library
 
 1. To remove Vagrant image, on host machine:
