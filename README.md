@@ -10,14 +10,22 @@ is used to create machine images for VMware and VirtualBox.
 
 ### Contents
 
-1. [Expectations](#expectations)
-    1. [Space](#space)
-    1. [Time](#time)
-    1. [Background knowledge](#background-knowledge)
 1. [Prerequisites](#prerequisites)
     1. [Prerequisite software](#prerequisite-software)
     1. [Clone repository](#clone-repository)
-    1. [Docker images](#docker-images)
+1. [Build](#build)
+    1. [Define packer_cache directory](#define-packer_cache-directory)
+    1. [Build all versions](#build-all-versions)
+    1. [Build specific version](#build-specific-version)
+1. [Run on VMware Workstation](#run-on-vmware-workstation)
+1. [Run on Vagrant / VirtualBox](#run-on-vagrant-virtualbox)
+    1. [Add to library](#add-to-library)
+    1. [Run](#run)
+    1. [Login to guest machine(#login-to-guest-machine)
+    1. [Find guest machine IP address](#find-guest-machine-ip-address)
+    1. [Remote login to guest machine](#remote-login-to-guest-machine)
+    1. [Remove image from Vagrant library](#remove-image-from-vagrant-library)
+1. [References](#references)
 
 ## Prerequisites
 
