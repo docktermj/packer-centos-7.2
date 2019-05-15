@@ -114,6 +114,8 @@ and will not be reused across repository instances.
 1. Example:
 
     ```console
+    cd ${GIT_REPOSITORY_DIR}
+
     vagrant box add \
       --name="packer-centos-7.2-virtualbox" \
       ./packer-centos-7.2-virtualbox-nnnnnnnnnn.box
