@@ -1,14 +1,47 @@
 # packer-centos-7.2
 
+## Overview
+
 This repository is an example of how to build machine images using [Packer](https://www.packer.io/).
 
 In this example, a
 CentOS 7.2 Minimal ISO image
 is used to create machine images for VMware and VirtualBox.
 
-## Build dependencies
+### Contents
 
-See [build dependencies](https://github.com/docktermj/KnowledgeBase/blob/master/build-dependencies/packer.md).
+1. [Expectations](#expectations)
+    1. [Space](#space)
+    1. [Time](#time)
+    1. [Background knowledge](#background-knowledge)
+1. [Prerequisites](#prerequisites)
+    1. [Prerequisite software](#prerequisite-software)
+    1. [Clone repository](#clone-repository)
+    1. [Docker images](#docker-images)
+
+## Prerequisites
+
+### Prerequisite software
+
+1. See [build dependencies](https://github.com/docktermj/KnowledgeBase/blob/master/build-dependencies/packer.md).
+
+### Clone repository
+
+1. Set these environment variable values:
+
+    ```console
+    export GIT_ACCOUNT=docktermj
+    export GIT_REPOSITORY=packer-centos-7.2
+    ```
+
+1. Follow steps in [clone-repository](https://github.com/docktermj/KnowledgeBase/blob/master/HowTo/clone-repository.md) to install the Git repository.
+
+1. After the repository has been cloned, be sure the following are set:
+
+    ```console
+    export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
+    export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
+    ```
 
 ## Build
 
@@ -30,6 +63,7 @@ and will not be reused across repository instances.
 1. Example:
 
     ```console
+    cd ${GIT_REPOSITORY_DIR}
     make
     ```
 
@@ -38,12 +72,14 @@ and will not be reused across repository instances.
 1. VMware
 
     ```console
+    cd ${GIT_REPOSITORY_DIR}
     make vmware-iso
     ```
 
 1. VirtualBox
 
     ```console
+    cd ${GIT_REPOSITORY_DIR}
     make virtualbox-iso
     ```
 
@@ -51,7 +87,7 @@ and will not be reused across repository instances.
 
 1. Choose VMX file
    1. VMware Workstation > File > Open...
-      1. Navigate to `.../packer-centos-7.2/output-vmware-iso-nnnnnnnnnn/`
+      1. Navigate to `${GIT_REPOSITORY_DIR}/packer-centos-7.2/output-vmware-iso-nnnnnnnnnn/`
       1. Choose `packer-centos-7.2-nnnnnnnnnn.vmx`
 1. Optional: Change networking
    1. Navigate to VMware Workstation > My Computer > packer-centos-7.2-nnnnnnnnnn
