@@ -37,9 +37,9 @@ and will not be reused across repository instances.
 
 1. VMware
 
-```console
-make vmware-iso
-```
+    ```console
+    make vmware-iso
+    ```
 
 1. VirtualBox
 
