@@ -2,8 +2,8 @@
 
 This repository is an example of how to build machine images using [Packer](https://www.packer.io/).
 
-In this example, a 
-CentOS 7.2 Minimal ISO image 
+In this example, a
+CentOS 7.2 Minimal ISO image
 is used to create machine images for VMware and VirtualBox.
 
 ## Build dependencies
@@ -16,34 +16,36 @@ Use `make help` to see targets.
 
 ### Define packer_cache directory
 
-Optional: This defines a common place to keep large `*.iso` files for reuse across repository instances.
+1. Optional: This defines a common place to keep large `*.iso` files for reuse across repository instances.
 If not defined, a `packer_cache` directory will be created within each "packer-*" repository instance
 and will not be reused across repository instances.
 
-```console
-mkdir ~/packer_cache
-export PACKER_CACHE_DIR=~/packer_cache
-```
+    ```console
+    mkdir ~/packer_cache
+    export PACKER_CACHE_DIR=~/packer_cache
+    ```
 
 ### Build all versions
 
-```console
-make
-```
+1. Example:
+
+    ```console
+    make
+    ```
 
 ### Build specific version
 
-VMware
+1. VMware
 
 ```console
 make vmware-iso
 ```
 
-VirtualBox
+1. VirtualBox
 
-```console
-make virtualbox-iso
-```
+    ```console
+    make virtualbox-iso
+    ```
 
 ## Run on VMware Workstation
 
@@ -65,9 +67,11 @@ make virtualbox-iso
 
 ### Add to library
 
-```console
-vagrant box add --name="packer-centos-7.2-virtualbox" ./packer-centos-7.2-virtualbox-nnnnnnnnnn.box
-```
+1. Example:
+
+    ```console
+    vagrant box add --name="packer-centos-7.2-virtualbox" ./packer-centos-7.2-virtualbox-nnnnnnnnnn.box
+    ```
 
 ### Run
 
@@ -75,75 +79,80 @@ An example of how to run in a new directory.
 
 #### Specify directory
 
-In this example the `/tmp/packer-centos-7.2` directory is used.
+1. In this example the `/tmp/packer-centos-7.2` directory is used.
 
-```console
-export PACKER_CENTOS_72=/tmp/packer-centos-7.2
-```
+    ```console
+    export PACKER_CENTOS_72=/tmp/packer-centos-7.2
+    ```
 
 #### Initialize directory
 
-Back up an old directory and initialize new directory with Vagrant image.
+1. Back up an old directory and initialize new directory with Vagrant image.
 
-```console
-mv ${PACKER_CENTOS_72} ${PACKER_CENTOS_72}.$(date +%s)
-mkdir ${PACKER_CENTOS_72}
-cd ${PACKER_CENTOS_72}
-vagrant init packer-centos-7.2-virtualbox
-```
+    ```console
+    mv ${PACKER_CENTOS_72} ${PACKER_CENTOS_72}.$(date +%s)
+    mkdir ${PACKER_CENTOS_72}
+    cd ${PACKER_CENTOS_72}
+    vagrant init packer-centos-7.2-virtualbox
+    ```
 
 #### Enable remote login
 
-Modify Vagrantfile to allow remote login by
-uncommenting `config.vm.network` in `${PACKER_CENTOS_72}/Vagrantfile`. 
+1. Modify Vagrantfile to allow remote login by
+uncommenting `config.vm.network` in `${PACKER_CENTOS_72}/Vagrantfile`.
 Example:
 
-```console
-sed -i.$(date +'%s') \
-  -e 's/# config.vm.network \"public_network\"/config.vm.network \"public_network\"/g' \
-  ${PACKER_CENTOS_72}/Vagrantfile
-```
+    ```console
+    sed -i.$(date +'%s') \
+      -e 's/# config.vm.network \"public_network\"/config.vm.network \"public_network\"/g' \
+      ${PACKER_CENTOS_72}/Vagrantfile
+    ```
 
 #### Start guest machine
 
-```console
-cd ${PACKER_CENTOS_72}
-vagrant up
-```
+1. Example:
+
+    ```console
+    cd ${PACKER_CENTOS_72}
+    vagrant up
+    ```
 
 ### Login to guest machine
 
-```console
-cd ${PACKER_CENTOS_72}
-vagrant ssh
-```
+1. Example:
+
+    ```console
+    cd ${PACKER_CENTOS_72}
+    vagrant ssh
+    ```
 
 ### Find guest machine IP address
 
-In the vagrant machine, find the IP address.
+1. In the vagrant machine, find the IP address.
 
-```console
-ip addr show
-```
+    ```console
+    ip addr show
+    ```
 
 ### Remote login to guest machine
 
-SSH login from a remote machine.
+1. SSH login from a remote machine.
 
-```console
-ssh vagrant@nn.nn.nn.nn
-```
+    ```console
+    ssh vagrant@nn.nn.nn.nn
+    ```
 
 Password: vagrant
 
 ### Remove image from Vagrant library
 
-To remove Vagrant image, on host machine:
+1. To remove Vagrant image, on host machine:
 
-```console
-vagrant box remove packer-centos-7.2-virtualbox
-```
+    ```console
+    vagrant box remove packer-centos-7.2-virtualbox
+    ```
 
 ## References
+
 1. [Build dependencies](https://github.com/docktermj/KnowledgeBase/blob/master/build-dependencies/packer.md).
 1. [Bibliography](https://github.com/docktermj/KnowledgeBase/blob/master/bibliography/packer.md)
